@@ -1,11 +1,11 @@
 const notFound = (req, res, next) => {
-    const error = new Error(`Not Found: ${req.originalURL}`);
+    const error = new Error(`Not Found: ${req.originalUrl}`);
     res.status(404)
     next(error);
 }
 
 const errorHandler = (err, req, res, next) => {
-    let statusCode = req.statusCode === 200 ? 500 : req.statusCode;
+    let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     let message = err.message;
 
     //mongoose custom error
